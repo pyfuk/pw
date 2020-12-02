@@ -19,6 +19,7 @@ export class Transaction extends BaseEntity {
   receiverAccount: Account;
 
   @Column() amount: number;
+  @Column() date: Date;
 
   static fromObj(obj: Object): Transaction {
     const transaction = new Transaction();

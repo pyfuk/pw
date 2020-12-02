@@ -46,6 +46,7 @@ export const TransactionController = {
       senderAccount: sender,
       receiverAccount: receiver,
       amount: req.body.amount,
+      date: new Date(),
     }).save();
 
     return transaction;
