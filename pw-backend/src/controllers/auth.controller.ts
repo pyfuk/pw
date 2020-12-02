@@ -38,7 +38,7 @@ export const AuthController = {
     }
 
     const user = await User.createQueryBuilder("user")
-      .select(["user.email", "user.password"])
+      .select(["user.id", "user.email", "user.password"])
       .where("user.email = :email", { email: req.body.email })
       .getOne();
 
@@ -52,5 +52,21 @@ export const AuthController = {
     return {
       token: jwt.sign({ id: user.id }, env.secret),
     };
+  },
+
+  info: async (req: Request) => {
+    const user = await User.createQueryBuilder("user")
+      .select([
+        "user.id",
+        "user.username",
+        "user.email",
+        "account.id",
+        "account.balance",
+      ])
+      .leftJoin("user.account", "account")
+      .where("user.id = :id", { id: req.userId })
+      .getOne();
+
+    return user;
   },
 };

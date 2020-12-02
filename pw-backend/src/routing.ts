@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AuthController } from "./controllers/auth.controller";
 import { PingController } from "./controllers/ping.controller";
+import { varifyToken } from "./utils/varity-token";
 
 export interface Route {
   method: "get" | "post" | "delete" | "put";
@@ -16,4 +17,10 @@ export const routes: Route[] = [
   /** Auth */
   { method: "post", url: "/signup", handler: AuthController.signup },
   { method: "post", url: "/signin", handler: AuthController.signin },
+  {
+    method: "get",
+    url: "/info",
+    varifyToken: varifyToken,
+    handler: AuthController.info,
+  },
 ];
