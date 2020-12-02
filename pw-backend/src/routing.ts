@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AuthController } from "./controllers/auth.controller";
 import { PingController } from "./controllers/ping.controller";
+import { TransactionController } from "./controllers/transaction.controller";
 import { varifyToken } from "./utils/varity-token";
 
 export interface Route {
@@ -22,5 +23,13 @@ export const routes: Route[] = [
     url: "/info",
     varifyToken: varifyToken,
     handler: AuthController.info,
+  },
+
+  /** Transaction */
+  {
+    method: "post",
+    url: "/add-transaction",
+    varifyToken: varifyToken,
+    handler: TransactionController.addTransaction,
   },
 ];

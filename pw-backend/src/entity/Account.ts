@@ -8,9 +8,9 @@ export class Account extends BaseEntity {
   @Column() balance: string;
 
   static fromObj(obj: Object): Account {
-    const user = new Account();
-    Object.keys(obj).forEach((key) => (user[key] = obj[key]));
-    return user;
+    const account = new Account();
+    Object.keys(obj).forEach((key) => (account[key] = obj[key]));
+    return account;
   }
 
   static updateById(id, params) {

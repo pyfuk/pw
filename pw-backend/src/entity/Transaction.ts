@@ -3,8 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  OneToOne,
-  JoinColumn,
+  ManyToOne,
 } from "typeorm";
 import { Account } from "./Account";
 
@@ -13,20 +12,18 @@ export class Transaction extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne((type) => Account)
-  @JoinColumn()
+  @ManyToOne((type) => Account)
   senderAccount: Account;
 
-  @OneToOne((type) => Account)
-  @JoinColumn()
+  @ManyToOne((type) => Account)
   receiverAccount: Account;
 
   @Column() amount: number;
 
   static fromObj(obj: Object): Transaction {
-    const user = new Transaction();
-    Object.keys(obj).forEach((key) => (user[key] = obj[key]));
-    return user;
+    const transaction = new Transaction();
+    Object.keys(obj).forEach((key) => (transaction[key] = obj[key]));
+    return transaction;
   }
 
   static updateById(id, params) {
