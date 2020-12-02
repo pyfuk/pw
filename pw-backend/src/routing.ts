@@ -15,4 +15,5 @@ export const routes: Route[] = [
 
   /** Auth */
   { method: "post", url: "/signup", handler: AuthController.signup },
+  { method: "post", url: "/signin", handler: AuthController.signin },
 ];
