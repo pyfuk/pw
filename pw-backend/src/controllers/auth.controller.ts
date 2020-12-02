@@ -67,6 +67,10 @@ export const AuthController = {
       .where("user.id = :id", { id: req.userId })
       .getOne();
 
+    if (!user) {
+      throw new ControllerError("Пользователь не найден", 400);
+    }
+
     return user;
   },
 };
