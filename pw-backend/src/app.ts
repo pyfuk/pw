@@ -1,3 +1,4 @@
+import { json } from "body-parser";
 import * as express from "express";
 import { NextFunction, Request, Response } from "express";
 import { createConnection } from "typeorm";
@@ -5,6 +6,7 @@ import { routes } from "./routing";
 
 const app = express();
 
+app.use(json());
 const connection = createConnection();
 
 routes.forEach((r) => {

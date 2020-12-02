@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { AuthController } from "./controllers/auth.controller";
 import { PingController } from "./controllers/ping.controller";
 
 export interface Route {
@@ -11,4 +12,7 @@ export interface Route {
 export const routes: Route[] = [
   /** Ping */
   { method: "get", url: "/ping", handler: PingController.ping },
+
+  /** Auth */
+  { method: "post", url: "/signup", handler: AuthController.signup },
 ];
