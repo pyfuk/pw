@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToOne,
+  JoinColumn,
+} from "typeorm";
+import { Account } from "./Account";
 
 @Entity()
 export class User extends BaseEntity {
@@ -8,6 +16,10 @@ export class User extends BaseEntity {
   @Column() username: string;
   @Column() password: string;
   @Column() email: string;
+
+  @OneToOne((type) => Account)
+  @JoinColumn()
+  account: Account;
 
   static fromObj(obj: Object): User {
     const user = new User();

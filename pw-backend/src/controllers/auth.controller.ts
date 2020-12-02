@@ -4,6 +4,7 @@ import { comparePassword, encryptPassword } from "../utils/encrypt";
 import { ControllerError } from "../utils/errors";
 import * as jwt from "jsonwebtoken";
 import { env } from "../environments/environment";
+import { Account } from "../entity/Account";
 
 export const AuthController = {
   signup: async (req: Request) => {
@@ -15,10 +16,15 @@ export const AuthController = {
       throw new ControllerError("Пользователь уже зарегистрирован", 400);
     }
 
+    const account = await Account.fromObj({
+      balance: 500,
+    }).save();
+
     const user = await User.fromObj({
       username: req.body.username,
       email: req.body.email,
       password: await encryptPassword(req.body.password),
+      account: account,
     }).save();
 
     return {
