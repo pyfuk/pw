@@ -1,0 +1,42 @@
+header {
+  color: #fff;
+  background: #4a63e7;
+  border-radius: 20px;
+  min-height: 420px;
+  max-height: 420px;
+  top: 50px;
+  overflow: hidden;
+  position: fixed;
+  width: 265px;
+
+  .header_inner {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    position: absolute;
+
+    .image_container {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 200px;
+      }
+    }
+
+    nav {
+      margin-top: 40px;
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        li {
+          line-height: 2.5;
+          .icon {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
