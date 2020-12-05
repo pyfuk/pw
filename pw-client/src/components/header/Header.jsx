@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
@@ -15,19 +16,19 @@ const Header = () => {
               <span className={s.icon}>
                 <FontAwesomeIcon icon={faHome} />
               </span>
-              Main
+              <Link to="/">Home</Link>
             </li>
             <li>
               <span className={s.icon}>
                 <FontAwesomeIcon icon={faHome} />
               </span>
-              Sign in
+              <Link to="/signin">Sign in</Link>
             </li>
             <li>
               <span className={s.icon}>
                 <FontAwesomeIcon icon={faHome} />
               </span>
-              Sign up
+              <Link to="/signup">Sign up</Link>
             </li>
           </ul>
         </nav>
