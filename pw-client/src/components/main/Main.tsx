@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Main.module.scss";
 import { Switch, Route, Link } from "react-router-dom";
+import SignIn from "../signIn/SignInContainer";
 
 const Main = () => {
   return (
@@ -22,10 +23,16 @@ const Main = () => {
           </section>
         </Route>
         <Route path="/signup">
-          <section>SignUp</section>
+          <section className={s.main_section}>
+            <div className={s.container}>
+              <h2>Sign Up</h2>
+            </div>
+          </section>
         </Route>
         <Route path="/signin">
-          <section>SignIn</section>
+          <section>
+            <SignIn />
+          </section>
         </Route>
       </Switch>
     </main>

@@ -4,9 +4,12 @@ import thunk from "redux-thunk";
 
 import reducers from "./reducers";
 
+const reducer = combineReducers({ ...reducers, form: formReducer });
+
 const storeFactory = () => {
-  const reducer = combineReducers({ ...reducers, form: formReducer });
   return createStore(reducer, applyMiddleware(thunk));
 };
+
+export type ReduxState = ReturnType<typeof reducer>;
 
 export default storeFactory;
