@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm, SubmitHandler } from "redux-form";
 
-import s from "./SignInForm.module.scss";
+import s from "./SignUpForm.module.scss";
 
 interface SignUpFormProps {
   handleSubmit: SubmitHandler;

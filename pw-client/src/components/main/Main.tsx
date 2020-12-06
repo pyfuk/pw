@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Main.module.scss";
 import { Switch, Route, Link } from "react-router-dom";
 import SignIn from "../signIn/SignInContainer";
+import SignUp from "../signup/SignUpContainer";
 
 const Main = () => {
   return (
@@ -26,6 +27,7 @@ const Main = () => {
           <section className={s.main_section}>
             <div className={s.container}>
               <h2>Sign Up</h2>
+              <SignUp />
             </div>
           </section>
         </Route>

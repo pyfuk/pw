@@ -24,3 +24,10 @@ export const сompleteSignIn = () => async (
 ) => {
   console.log("hrere");
 };
+
+export const сompleteSignUp = () => async (
+  dispatch: Dispatch,
+  getState: GetFormState
+) => {
+  console.log("hrere");
+};
