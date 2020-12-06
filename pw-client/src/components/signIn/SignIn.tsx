@@ -3,10 +3,9 @@ import SignInForm from "../forms/signin/SignInForm";
 
 interface SignInProps {
   onSignIn: () => void;
-  email: string;
 }
 
-const SignIn = ({ onSignIn, email }: SignInProps) => {
+const SignIn = ({ onSignIn }: SignInProps) => {
   const onSubmit = (formData: any) => {
     console.log(formData);
     onSignIn();
@@ -14,7 +13,6 @@ const SignIn = ({ onSignIn, email }: SignInProps) => {
 
   return (
     <div>
-      {email}
       <SignInForm onSubmit={onSubmit}></SignInForm>
     </div>
   );

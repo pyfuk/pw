@@ -30,8 +30,11 @@ const Main = () => {
           </section>
         </Route>
         <Route path="/signin">
-          <section>
-            <SignIn />
+          <section className={s.main_section}>
+            <div className={s.container}>
+              <h2>Sign In</h2>
+              <SignIn />
+            </div>
           </section>
         </Route>
       </Switch>
