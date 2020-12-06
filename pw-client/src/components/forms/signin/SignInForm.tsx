@@ -28,10 +28,10 @@ const SignInForm = ({ handleSubmit }: SignInFormProps) => {
         />
       </div>
       <div>
-        <button>Login</button>
+        <button>Sign In</button>
       </div>
     </form>
   );
 };
 
-export default reduxForm({ form: "login" })(SignInForm);
+export default reduxForm({ form: "signin" })(SignInForm);
