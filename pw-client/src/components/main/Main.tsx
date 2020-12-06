@@ -3,6 +3,7 @@ import s from "./Main.module.scss";
 import { Switch, Route, Link } from "react-router-dom";
 import SignIn from "../signIn/SignInContainer";
 import SignUp from "../signup/SignUpContainer";
+import Profile from "../profile/ProfileContainer";
 
 interface MainProps {
   isAuthenticated: boolean;
@@ -14,9 +15,9 @@ const Main = ({ isAuthenticated }: MainProps) => {
       <Switch>
         {isAuthenticated ? (
           <Route exact path="/">
-            <section className={s.main_section}>
+            <section className={s.profile_section}>
               <div className={s.container}>
-                <h2>Profile</h2>
+                <Profile />
               </div>
             </section>
           </Route>

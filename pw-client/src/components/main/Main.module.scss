@@ -40,4 +40,15 @@ main {
       }
     }
   }
+
+  .profile_section {
+    color: #fff;
+    background: #4a63e7;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    .container {
+      width: 600px;
+    }
+  }
 }
