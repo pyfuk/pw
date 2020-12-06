@@ -4,7 +4,7 @@ import { ReduxState } from "../../redux/store";
 import Header from "./Header";
 
 const mapStateToProps = (state: ReduxState) => ({
-  isAuthenticated: true,
+  isAuthenticated: false,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({});

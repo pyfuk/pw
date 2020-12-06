@@ -4,7 +4,7 @@ import { ReduxState } from "../../redux/store";
 import Main from "./Main";
 
 const mapStateToProps = (state: ReduxState) => ({
-  isAuthenticated: true,
+  isAuthenticated: false,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({});

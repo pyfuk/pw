@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
 import { GetFormState } from "redux-form";
+import axios from "axios";
 
 export const ADD_EMAIL = "ADD_EMAIL";
 export const COMPLETE_SIGNIN = "COMPLETE_SIGNIN";
@@ -27,9 +28,23 @@ export const сompleteSignIn = () => async (
 
 export const сompleteSignUp = () => async (
   dispatch: Dispatch,
-  getState: GetFormState
+  getState: any
 ) => {
-  console.log("hrere");
+  const {
+    form: {
+      signup: { values },
+    },
+  } = getState();
+
+  axios
+    .post("http://localhost:8888/api/signup", {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+    })
+    .then((token) => {
+      console.log(token);
+    });
 };
 
 export const completeTransfer = () => async (

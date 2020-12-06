@@ -7,7 +7,6 @@ interface SignUpProps {
 
 const SignUp = ({ onSignUp }: SignUpProps) => {
   const onSubmit = (formData: any) => {
-    console.log(formData);
     onSignUp();
   };
 
