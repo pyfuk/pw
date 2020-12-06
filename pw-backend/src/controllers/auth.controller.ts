@@ -64,7 +64,7 @@ export const AuthController = {
         "account.balance",
       ])
       .leftJoin("user.account", "account")
-      .where("user.id = :id", { id: req.userId })
+      .where("user.id = :id", { id: req.body.userId })
       .getOne();
 
     if (!user) {

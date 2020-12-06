@@ -13,13 +13,13 @@ export const varifyToken = async (
   if (typeof bearerHeader !== "undefined") {
     const bearer = bearerHeader.split(" ");
     const token = bearer[1];
-    req.token = token;
+    req.body.token = token;
 
     jwt.verify(token, env.secret, (err, authData) => {
       if (err) {
         throw new ControllerError("Токен не действителен", 403);
       } else {
-        req.userId = authData.id;
+        req.body.userId = authData.id;
       }
     });
     next();

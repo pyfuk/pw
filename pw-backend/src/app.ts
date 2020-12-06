@@ -3,10 +3,12 @@ import * as express from "express";
 import { NextFunction, Request, Response } from "express";
 import { createConnection } from "typeorm";
 import { routes } from "./routing";
+import * as cors from "cors";
 
 const app = express();
 
 app.use(json());
+app.use(cors());
 const connection = createConnection();
 
 routes.forEach((r) => {
