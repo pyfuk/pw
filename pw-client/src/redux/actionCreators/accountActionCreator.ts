@@ -31,3 +31,10 @@ export const сompleteSignUp = () => async (
 ) => {
   console.log("hrere");
 };
+
+export const completeTransfer = () => async (
+  dispatch: Dispatch,
+  getState: GetFormState
+) => {
+  console.log("hrere");
+};

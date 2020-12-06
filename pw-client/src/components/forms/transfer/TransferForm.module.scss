@@ -1,0 +1,28 @@
+form {
+  width: 200px;
+  .form_input {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    height: 35px;
+    border-radius: 25px;
+    padding: 0 15px 0 19px;
+    border: none;
+    outline: none;
+    margin: 20px 0;
+  }
+
+  button {
+    color: #fff;
+    background-color: inherit;
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-size: 16px;
+    border: solid 1px #fff;
+    outline: none;
+    cursor: pointer;
+  }
+}
