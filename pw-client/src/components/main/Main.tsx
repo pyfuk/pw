@@ -5,6 +5,7 @@ import SignIn from "../signIn/SignInContainer";
 import SignUp from "../signup/SignUpContainer";
 import Profile from "../profile/ProfileContainer";
 import Transfer from "../profile/transfer/TransferContainer";
+import History from "../profile/history/HistoryContainer";
 
 interface MainProps {
   isAuthenticated: boolean;
@@ -26,6 +27,12 @@ const Main = ({ isAuthenticated }: MainProps) => {
                 <div className={s.container}>
                   <h2>Transfer money</h2>
                   <Transfer />
+                </div>
+              </section>
+              <section className={s.profile_section}>
+                <div className={s.container}>
+                  <h2>History</h2>
+                  <History />
                 </div>
               </section>
             </>
