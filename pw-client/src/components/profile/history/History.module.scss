@@ -1,22 +1,31 @@
-.transfer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #666666;
-  width: 100%;
-  background: #e6e6e6;
-  height: 35px;
-  border-radius: 25px;
-  padding: 0 15px 0 19px;
-  border: none;
-  outline: none;
-  margin: 20px 0;
+.container {
+  overflow: scroll;
+  overflow-x: hidden;
 
-  span {
-    width: 100px;
-    text-align: center;
-    font-size: 1.1em;
+  max-height: 300px;
+  .transfer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    background: #e6e6e6;
+    height: 35px;
+    border-radius: 25px;
+    padding: 0 15px 0 19px;
+    border: none;
+    outline: none;
+    margin: 20px 0;
+
+    span {
+      width: 100px;
+      text-align: center;
+      font-size: 1.1em;
+    }
   }
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }

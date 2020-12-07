@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Transaction } from "../../../redux/models/Transaction";
 import s from "./History.module.scss";
 
 interface HistoryProps {
-  transactions: {
-    id: number;
-    username: string;
-    amount: number;
-    balance: number;
-  }[];
+  transactions: Transaction[];
+  getTransactions: () => void;
 }
 
-const History = ({ transactions }: HistoryProps) => {
+const History = ({ transactions, getTransactions }: HistoryProps) => {
+  useEffect(() => {
+    getTransactions();
+  }, []);
+
   return (
     <div className={s.container}>
       <div className={s.transfer}>

@@ -1,9 +1,11 @@
 import { Dispatch } from "redux";
 import axios from "axios";
 import { User } from "../models/User";
+import { Transaction } from "../models/Transaction";
 
 export const RECEIVE_USERS = "RECEIVE_USERS";
 export const CONFIRM_TRANSFER = "CONFIRM_TRANSFER";
+export const RECEIVE_TRANSACTIONS = "RECEIVE_TRANSACTIONS";
 
 interface ReceiveUsersAction {
   type: typeof RECEIVE_USERS;
@@ -15,9 +17,15 @@ export interface ConfirmTransferAction {
   user: User;
 }
 
+interface ReceiveTransactionsAction {
+  type: typeof RECEIVE_TRANSACTIONS;
+  transactions: Transaction[];
+}
+
 export type TransactionActionCreatorTypes =
   | ReceiveUsersAction
-  | ConfirmTransferAction;
+  | ConfirmTransferAction
+  | ReceiveTransactionsAction;
 
 export const receiveUsers = (users: User[]) => ({ type: RECEIVE_USERS, users });
 export const loadUsers = () => async (dispatch: Dispatch, getState: any) => {
@@ -71,5 +79,29 @@ export const completeTransfer = () => async (
     })
     .catch((error) => {
       console.log(error);
+    });
+};
+
+export const receiveTransactions = (transactions: Transaction[]) => ({
+  type: RECEIVE_TRANSACTIONS,
+  transactions,
+});
+export const loadTransactions = () => async (
+  dispatch: Dispatch,
+  getState: any
+) => {
+  const {
+    account: { token },
+  } = getState();
+
+  axios
+    .get("http://localhost:8888/api/history", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch(receiveTransactions(res.data));
+      console.log(res.data);
     });
 };

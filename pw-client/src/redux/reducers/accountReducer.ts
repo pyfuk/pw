@@ -21,8 +21,6 @@ const accountReducer: Reducer<AccountReducerType, AccountActionCreatorTypes> = (
     case CONFIRM_SIGNIN:
       return { ...state, user: action.user, token: action.token };
     case CONFIRM_TRANSFER:
-      console.log(state.user);
-
       return { ...state, user: action.user };
     default:
       return state;
