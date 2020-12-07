@@ -1,6 +1,7 @@
 import { Reducer } from "redux";
 import {
   AccountActionCreatorTypes,
+  CONFIRM_SIGNIN,
   CONFIRM_SIGNUP,
 } from "../actionCreators/accountActionCreator";
 
@@ -15,6 +16,8 @@ const accountReducer: Reducer<AccountReducerType, AccountActionCreatorTypes> = (
 ) => {
   switch (action.type) {
     case CONFIRM_SIGNUP:
+      return { ...state, user: action.user, token: action.token };
+    case CONFIRM_SIGNIN:
       return { ...state, user: action.user, token: action.token };
     default:
       return state;

@@ -13,8 +13,8 @@ const SignInForm = ({ handleSubmit }: SignInFormProps) => {
       <div>
         <Field
           component={"input"}
-          name={"login"}
-          placeholder={"Login"}
+          name={"email"}
+          placeholder={"Email"}
           className={s.form_input}
         />
       </div>

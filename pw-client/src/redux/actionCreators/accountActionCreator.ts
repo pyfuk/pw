@@ -4,6 +4,7 @@ import axios from "axios";
 import { User } from "../models/User";
 
 export const CONFIRM_SIGNUP = "CONFIRM_SIGNUP";
+export const CONFIRM_SIGNIN = "CONFIRM_SIGNIN";
 
 interface ConfirmSignUpAction {
   type: typeof CONFIRM_SIGNUP;
@@ -11,13 +12,44 @@ interface ConfirmSignUpAction {
   token: string;
 }
 
-export type AccountActionCreatorTypes = ConfirmSignUpAction;
+interface ConfirmSignInAction {
+  type: typeof CONFIRM_SIGNIN;
+  user: any;
+  token: string;
+}
+
+export type AccountActionCreatorTypes =
+  | ConfirmSignUpAction
+  | ConfirmSignInAction;
+
+export const confirmSignIn = (user: User, token: string) => ({
+  type: CONFIRM_SIGNIN,
+  user,
+  token,
+});
 
 export const сompleteSignIn = () => async (
   dispatch: Dispatch,
-  getState: GetFormState
+  getState: any
 ) => {
-  console.log("hrere");
+  const {
+    form: {
+      signin: { values },
+    },
+  } = getState();
+
+  axios
+    .post("http://localhost:8888/api/signin", {
+      email: values.email,
+      password: values.password,
+    })
+    .then((res) => {
+      dispatch(confirmSignUp(res.data.user, res.data.token));
+      console.log(res.data.user);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const confirmSignUp = (user: User, token: string) => ({
