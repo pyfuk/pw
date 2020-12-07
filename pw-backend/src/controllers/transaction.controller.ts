@@ -11,7 +11,7 @@ export const TransactionController = {
       throw new ControllerError("Заполните все поля", 400);
     }
 
-    const receiver = await User.createQueryBuilder("user")
+    let receiver = await User.createQueryBuilder("user")
       .select(["user.id", "user.email", "account.id", "account.balance"])
       .leftJoin("user.account", "account")
       .where("user.email = :email", { email: req.body.email })
@@ -21,7 +21,7 @@ export const TransactionController = {
       throw new ControllerError("Получатель не найден", 400);
     }
 
-    const sender = await AuthController.info(req);
+    let sender = await AuthController.info(req);
 
     if (sender.id === receiver.id) {
       throw new ControllerError(
@@ -35,12 +35,15 @@ export const TransactionController = {
     }
 
     await Account.updateById(sender.account.id, {
-      balance: +sender.account.balance - req.body.amount,
+      balance: sender.account.balance - req.body.amount,
     });
 
     await Account.updateById(receiver.account.id, {
-      balance: +receiver.account.balance + req.body.amount,
+      balance: +receiver.account.balance + +req.body.amount,
     });
+
+    receiver.account.balance += req.body.amount;
+    sender.account.balance -= req.body.amount;
 
     const transaction = await Transaction.fromObj({
       senderAccount: sender,

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import TransferForm from "../../forms/transfer/TransferForm";
 import s from "./Transfer.module.scss";
 
@@ -12,7 +11,7 @@ const Transfer = ({ onTransfer, getUsers }: TransferProps) => {
     console.log(formData);
     onTransfer();
   };
-  getUsers();
+
   return (
     <div>
       <TransferForm onSubmit={onSubmit}></TransferForm>

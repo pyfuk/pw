@@ -1,7 +1,9 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { completeTransfer } from "../../../redux/actionCreators/accountActionCreator";
-import { loadUsers } from "../../../redux/actionCreators/transactionActionCreator";
+import {
+  completeTransfer,
+  loadUsers,
+} from "../../../redux/actionCreators/transactionActionCreator";
 import { ReduxState } from "../../../redux/store";
 import Transfer from "./Transfer";
 

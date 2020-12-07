@@ -1,5 +1,6 @@
 import { Reducer } from "redux";
 import {
+  CONFIRM_TRANSFER,
   RECEIVE_USERS,
   TransactionActionCreatorTypes,
 } from "../actionCreators/transactionActionCreator";
@@ -16,6 +17,8 @@ const transactionReducer: Reducer<
   switch (action.type) {
     case RECEIVE_USERS:
       return { ...state, users: action.users };
+    case CONFIRM_TRANSFER:
+      return state;
     default:
       return state;
   }

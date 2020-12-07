@@ -2,6 +2,7 @@ import { Dispatch } from "redux";
 import { GetFormState } from "redux-form";
 import axios from "axios";
 import { User } from "../models/User";
+import { ConfirmTransferAction } from "./transactionActionCreator";
 
 export const CONFIRM_SIGNUP = "CONFIRM_SIGNUP";
 export const CONFIRM_SIGNIN = "CONFIRM_SIGNIN";
@@ -20,7 +21,8 @@ interface ConfirmSignInAction {
 
 export type AccountActionCreatorTypes =
   | ConfirmSignUpAction
-  | ConfirmSignInAction;
+  | ConfirmSignInAction
+  | ConfirmTransferAction;
 
 export const confirmSignIn = (user: User, token: string) => ({
   type: CONFIRM_SIGNIN,
@@ -81,11 +83,4 @@ export const сompleteSignUp = () => async (
     .catch((error) => {
       console.log(error);
     });
-};
-
-export const completeTransfer = () => async (
-  dispatch: Dispatch,
-  getState: GetFormState
-) => {
-  console.log("hrere");
 };

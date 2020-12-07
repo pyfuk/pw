@@ -5,7 +5,7 @@ export class Account extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column() balance: string;
+  @Column() balance: number;
 
   static fromObj(obj: Object): Account {
     const account = new Account();

@@ -13,8 +13,8 @@ const TransferForm = ({ handleSubmit }: TransferFormProps) => {
       <div>
         <Field
           component={"input"}
-          name={"username"}
-          placeholder={"Username"}
+          name={"email"}
+          placeholder={"Email"}
           className={s.form_input}
         />
       </div>
@@ -33,4 +33,4 @@ const TransferForm = ({ handleSubmit }: TransferFormProps) => {
   );
 };
 
-export default reduxForm({ form: "signin" })(TransferForm);
+export default reduxForm({ form: "transfer" })(TransferForm);
