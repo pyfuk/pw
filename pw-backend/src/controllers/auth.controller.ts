@@ -39,8 +39,16 @@ export const AuthController = {
     }
 
     const user = await User.createQueryBuilder("user")
-      .select(["user.id", "user.email", "user.password"])
+      .select([
+        "user.id",
+        "user.username",
+        "user.email",
+        "user.password",
+        "account.id",
+        "account.balance",
+      ])
       .where("user.email = :email", { email: req.body.email })
+      .leftJoin("user.account", "account")
       .getOne();
 
     if (!user) {

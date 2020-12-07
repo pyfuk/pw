@@ -4,7 +4,7 @@ import { ReduxState } from "../../redux/store";
 import Profile from "./Profile";
 
 const mapStateToProps = (state: ReduxState) => ({
-  user: { username: "Pyfuk", email: "shax988@gmail.com", balance: 500 },
+  user: state.account.user,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({});
