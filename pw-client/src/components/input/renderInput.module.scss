@@ -1,0 +1,24 @@
+.input_container {
+  display: flex;
+  align-items: center;
+  .form_input {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    display: block;
+    width: 200px;
+    background: #e6e6e6;
+    height: 35px;
+    border-radius: 25px;
+    padding: 0 15px 0 19px;
+    border: none;
+    outline: none;
+    margin: 20px 0;
+  }
+
+  span {
+    margin-left: 15px;
+    color: red;
+    width: 200px;
+  }
+}

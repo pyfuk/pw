@@ -12,20 +12,22 @@ const History = ({ transactions, getTransactions }: HistoryProps) => {
     getTransactions();
   }, []);
 
+  console.log(transactions);
+
   return (
     <div className={s.container}>
       <div className={s.transfer}>
         <span>ID</span>
-        <span>Username</span>
+        <span>Sender</span>
+        <span>Receiver</span>
         <span>Amount</span>
-        <span>Balance</span>
       </div>
       {transactions.map((transcation: any) => (
         <div className={s.transfer}>
           <span>{transcation.id}</span>
-          <span>{transcation.username}</span>
+          <span>{transcation.senderAccount.user.email}</span>
+          <span>{transcation.receiverAccount.user.email}</span>
           <span>{transcation.amount}</span>
-          <span>{transcation.balance}</span>
         </div>
       ))}
     </div>
