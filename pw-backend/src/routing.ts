@@ -38,4 +38,10 @@ export const routes: Route[] = [
     varifyToken: varifyToken,
     handler: TransactionController.addTransaction,
   },
+  {
+    method: "get",
+    url: "/history",
+    varifyToken: varifyToken,
+    handler: TransactionController.transactionHistory,
+  },
 ];

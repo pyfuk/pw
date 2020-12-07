@@ -54,4 +54,35 @@ export const TransactionController = {
 
     return transaction;
   },
+
+  transactionHistory: async (req: Request) => {
+    const user = await User.createQueryBuilder("user")
+      .select(["user.id", "account.id", "account.balance"])
+      .leftJoin("user.account", "account")
+      .where("user.id = :id", { id: req.body.userId })
+      .getOne();
+
+    const transactions = await Transaction.createQueryBuilder("transaction")
+      .select([
+        "transaction.id",
+        "senderAccount.id",
+        "senderUser.id",
+        "senderUser.email",
+        "receiverAccount.id",
+        "receiverUser.id",
+        "receiverUser.email",
+        "transaction.amount",
+        "transaction.date",
+      ])
+      .leftJoin("transaction.senderAccount", "senderAccount")
+      .leftJoin("senderAccount.user", "senderUser")
+      .leftJoin("transaction.receiverAccount", "receiverAccount")
+      .leftJoin("receiverAccount.user", "receiverUser")
+
+      .where("senderAccount.id = :id", { id: user.account.id })
+      .orWhere("receiverAccount.id = :id", { id: user.account.id })
+      .getMany();
+
+    return transactions;
+  },
 };

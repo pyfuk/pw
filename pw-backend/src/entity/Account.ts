@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToOne,
+} from "typeorm";
+import { User } from "./User";
 
 @Entity()
 export class Account extends BaseEntity {
@@ -6,6 +13,9 @@ export class Account extends BaseEntity {
   id: number;
 
   @Column() balance: number;
+
+  @OneToOne(() => User, (user) => user.account)
+  user: User;
 
   static fromObj(obj: Object): Account {
     const account = new Account();
