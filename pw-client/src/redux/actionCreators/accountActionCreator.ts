@@ -1,23 +1,17 @@
 import { Dispatch } from "redux";
 import { GetFormState } from "redux-form";
 import axios from "axios";
+import { User } from "../models/User";
 
-export const ADD_EMAIL = "ADD_EMAIL";
-export const COMPLETE_SIGNIN = "COMPLETE_SIGNIN";
+export const CONFIRM_SIGNUP = "CONFIRM_SIGNUP";
 
-interface AddEmailAction {
-  type: typeof ADD_EMAIL;
+interface ConfirmSignUpAction {
+  type: typeof CONFIRM_SIGNUP;
+  user: any;
+  token: string;
 }
 
-interface СompleteSignInAction {
-  type: typeof COMPLETE_SIGNIN;
-}
-
-export type AccountActionCreatorTypes = AddEmailAction | СompleteSignInAction;
-
-export const addEmail = () => ({
-  type: ADD_EMAIL,
-});
+export type AccountActionCreatorTypes = ConfirmSignUpAction;
 
 export const сompleteSignIn = () => async (
   dispatch: Dispatch,
@@ -25,6 +19,12 @@ export const сompleteSignIn = () => async (
 ) => {
   console.log("hrere");
 };
+
+export const confirmSignUp = (user: User, token: string) => ({
+  type: CONFIRM_SIGNUP,
+  user,
+  token,
+});
 
 export const сompleteSignUp = () => async (
   dispatch: Dispatch,
@@ -42,8 +42,12 @@ export const сompleteSignUp = () => async (
       email: values.email,
       password: values.password,
     })
-    .then((token) => {
-      console.log(token);
+    .then((res) => {
+      dispatch(confirmSignUp(res.data.user, res.data.token));
+      console.log(res.data.user);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
 

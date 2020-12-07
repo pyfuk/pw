@@ -4,7 +4,7 @@ import { ReduxState } from "../../redux/store";
 import { Dispatch } from "redux";
 import { сompleteSignIn } from "../../redux/actionCreators/accountActionCreator";
 
-const mapStateToProps = (state: ReduxState) => ({ email: state.account.email });
+const mapStateToProps = (state: ReduxState) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onSignIn: () => {

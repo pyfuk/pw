@@ -28,6 +28,7 @@ export const AuthController = {
     }).save();
 
     return {
+      user: user,
       token: jwt.sign({ id: user.id }, env.secret),
     };
   },
@@ -50,6 +51,7 @@ export const AuthController = {
     }
 
     return {
+      user: user,
       token: jwt.sign({ id: user.id }, env.secret),
     };
   },

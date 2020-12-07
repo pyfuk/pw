@@ -1,21 +1,21 @@
-import { Action, Reducer } from "redux";
+import { Reducer } from "redux";
 import {
   AccountActionCreatorTypes,
-  ADD_EMAIL,
+  CONFIRM_SIGNUP,
 } from "../actionCreators/accountActionCreator";
-import { Account } from "../models/Account";
 
-const initialState: Account = {
-  email: "",
-};
+interface AccountReducerType {
+  user: any;
+  token: string;
+}
 
-const accountReducer: Reducer<Account, Action> = (
-  state = initialState,
+const accountReducer: Reducer<AccountReducerType, AccountActionCreatorTypes> = (
+  state = { user: undefined, token: "" },
   action: AccountActionCreatorTypes
 ) => {
   switch (action.type) {
-    case ADD_EMAIL:
-      return state;
+    case CONFIRM_SIGNUP:
+      return { ...state, user: action.user, token: action.token };
     default:
       return state;
   }

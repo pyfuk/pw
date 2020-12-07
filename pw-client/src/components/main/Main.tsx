@@ -6,12 +6,15 @@ import SignUp from "../signup/SignUpContainer";
 import Profile from "../profile/ProfileContainer";
 import Transfer from "../profile/transfer/TransferContainer";
 import History from "../profile/history/HistoryContainer";
+import { useHistory } from "react-router-dom";
 
 interface MainProps {
   isAuthenticated: boolean;
 }
 
 const Main = ({ isAuthenticated }: MainProps) => {
+  let history = useHistory();
+  history.push("/");
   return (
     <main>
       <Switch>
