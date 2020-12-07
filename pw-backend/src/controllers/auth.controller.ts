@@ -83,4 +83,12 @@ export const AuthController = {
 
     return user;
   },
+
+  getUsers: async (req: Request) => {
+    const users = await User.createQueryBuilder("user")
+      .select(["user.id", "user.username", "user.email"])
+      .getMany();
+
+    return users;
+  },
 };

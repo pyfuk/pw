@@ -24,6 +24,12 @@ export const routes: Route[] = [
     varifyToken: varifyToken,
     handler: AuthController.info,
   },
+  {
+    method: "get",
+    url: "/users",
+    varifyToken: varifyToken,
+    handler: AuthController.getUsers,
+  },
 
   /** Transaction */
   {
